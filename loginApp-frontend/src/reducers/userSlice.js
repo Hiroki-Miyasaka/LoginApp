@@ -13,7 +13,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, action){
-            state.user = action.payload
+            state.user = action.payload;
             state.isLoggedIn = true;
         },
         setLoading(state, action){
@@ -39,6 +39,7 @@ export const login = (userData) => async dispatch => {
     try {
         dispatch(setLoading(true));
         const response = await axios.post(import.meta.env.VITE_APP_URL + "/api/user/login", userData);
+        //console.log(response);
         dispatch(setUser(response.data));
     } catch (error) {
         dispatch(setError(error.response.data.message));
@@ -47,8 +48,16 @@ export const login = (userData) => async dispatch => {
     }
 };
 
-export const register = (username, fullName, email, password) => async dispatch => {
-
+export const register = (userData) => async dispatch => {
+    try {
+        dispatch(setLoading(true));
+        await axios.post(import.meta.env.VITE_APP_URL + "/api/user/signup", userData);
+        // console.log(response);
+    } catch (error) {
+        dispatch(setError(error.response.data.message));
+    } finally {
+        dispatch(setLoading(false));
+    }
 };
 
 export const logout = () => async dispatch => {

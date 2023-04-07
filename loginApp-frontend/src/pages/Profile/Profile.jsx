@@ -11,11 +11,11 @@ const Profile = () => {
   const nagivate = useNavigate();
   const user = useSelector((state) => state.user.user);
 
-  useEffect(() => {
-    if(!user){
-      nagivate("/login");
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(!user){
+  //     nagivate("/login");
+  //   }
+  // }, [])
 
   return (
     <ProfileContainer>

@@ -10,6 +10,7 @@ const HeaderContainer = styled.div`
     padding: 1rem 2rem;
     h1{
         margin-right: auto;
+        cursor: pointer;
     }
     ul{
         list-style: none;
@@ -34,7 +35,7 @@ const Header = () => {
     }
   return (
     <HeaderContainer>
-        <h1>Logo</h1>
+        <h1 onClick={() => navigate("/")}>RickAndMorty</h1>
         <ul>
             <li>
                 <Link to={"/"}>Home</Link>
