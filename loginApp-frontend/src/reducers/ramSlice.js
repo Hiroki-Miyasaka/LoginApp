@@ -48,9 +48,11 @@ export const fetchCharacters = () => async dispatch => {
 export const fetchLocations = () => async dispatch => {
   // write your logic here
     try {
-        
+        dispatch(setLoading(true));
+        const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/location');
+        console.log(response);
     } catch (error) {
-        
+        console.log(error);
     }
 }
 

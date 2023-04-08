@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCharacters } from '../../reducers/ramSlice';
+import { fetchCharacters, fetchLocations } from '../../reducers/ramSlice';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 
 const HomeContainer = styled.div`
@@ -37,9 +37,14 @@ const TitleSection = styled.h1`
 const Home = () => {
   const dispatch = useDispatch();
   const characters = useSelector((state) => state.ram.characters);
+  const locations = useSelector((state) => state.ram.locations);
 
   useEffect(() => {
     dispatch(fetchCharacters());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchLocations());
   }, [dispatch]);
 
   return (
