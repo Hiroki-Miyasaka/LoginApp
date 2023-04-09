@@ -50,9 +50,11 @@ export const fetchLocations = () => async dispatch => {
     try {
         dispatch(setLoading(true));
         const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/location');
-        console.log(response);
+        dispatch(setLocations(response.data.results));
     } catch (error) {
-        console.log(error);
+        dispatch(setError(error.response.data.message));
+    } finally {
+      dispatch(setLoading(false));
     }
 }
 
