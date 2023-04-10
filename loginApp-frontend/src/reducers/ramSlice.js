@@ -61,9 +61,14 @@ export const fetchLocations = () => async dispatch => {
 export const fetchEpisodes = () => async dispatch => {
   // write your logic here
   try{
-
-  }catch(error){
-
+    dispatch(setLoading(true));
+    const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/episode');
+    // console.log(response);
+    dispatch(setEpisodes(response.data.results));
+  } catch(error){
+    dispatch(setError(error.response.data.message));
+  } finally {
+    dispatch(setLoading(false));
   }
 }
 
