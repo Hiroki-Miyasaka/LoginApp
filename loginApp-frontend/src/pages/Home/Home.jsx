@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCharacters, fetchLocations, fetchEpisodes } from '../../reducers/ramSlice';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
+import LocationCard from '../../components/LocationCard/LocationCard';
+import EpisodeCard from '../../components/EpisodeCard/EpisodeCard';
 
 const HomeContainer = styled.div`
     padding: 1rem 2rem;
@@ -23,6 +25,14 @@ const CharacterLayout = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
     text-align: center;
+`;
+
+const LocationLayout = styled(CharacterLayout)`
+
+`;
+
+const EpisodeLayout = styled(CharacterLayout)`
+
 `;
 
 const TitleSection = styled.h1`
@@ -66,15 +76,35 @@ const Home = () => {
         ))
       }
       </CharacterLayout>
+
       <TitleSection>Location</TitleSection>
+      <LocationLayout>
       {/* write some component to map here, 6 card */
         locations.length > 0 && 
         locations.slice(0, 6).map((location) => (
-          <LocationCard></LocationCard>
+          // console.log(location)
+          <LocationCard
+            key={location.id}
+            {...location}
+          />
         ))
       }
+      </LocationLayout>
+      
       <TitleSection>Episodes</TitleSection>
-      {/* write some component to map here, 6 card */}
+      <EpisodeLayout>
+      {/* write some component to map here, 6 card */
+        episodes.length > 0 && 
+        episodes.slice(0, 6).map((episode) => (
+          // console.log(episode)
+          <EpisodeCard
+            key={episode.id}
+            {...episode}
+          />
+        ))
+      }
+      </EpisodeLayout>
+    
     </HomeContainer>
   )
 }

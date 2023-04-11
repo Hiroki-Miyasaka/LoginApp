@@ -50,6 +50,7 @@ export const fetchLocations = () => async dispatch => {
     try {
         dispatch(setLoading(true));
         const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/location');
+        console.log(response);
         dispatch(setLocations(response.data.results));
     } catch (error) {
         dispatch(setError(error.response.data.message));
@@ -63,7 +64,7 @@ export const fetchEpisodes = () => async dispatch => {
   try{
     dispatch(setLoading(true));
     const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/episode');
-    // console.log(response);
+    console.log(response);
     dispatch(setEpisodes(response.data.results));
   } catch(error){
     dispatch(setError(error.response.data.message));
