@@ -67,7 +67,12 @@ const Home = () => {
       }
       </CharacterLayout>
       <TitleSection>Location</TitleSection>
-      {/* write some component to map here, 6 card */}
+      {/* write some component to map here, 6 card */
+        locations.length > 0 && 
+        locations.slice(0, 6).map((location) => (
+          <LocationCard></LocationCard>
+        ))
+      }
       <TitleSection>Episodes</TitleSection>
       {/* write some component to map here, 6 card */}
     </HomeContainer>
