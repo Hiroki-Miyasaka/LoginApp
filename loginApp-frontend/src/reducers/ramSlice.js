@@ -39,7 +39,7 @@ export const fetchCharacters = () => async dispatch => {
         const response = await axios.get(import.meta.env.VITE_APP_RAM_URL + '/character');
         dispatch(setCharacters(response.data.results));
     } catch (error) {
-        dispatch(setError(error.response.data.message));
+        dispatch(setError(error.response.data.error));
     } finally {
         dispatch(setLoading(false));
     }
@@ -53,7 +53,7 @@ export const fetchLocations = () => async dispatch => {
         console.log(response);
         dispatch(setLocations(response.data.results));
     } catch (error) {
-        dispatch(setError(error.response.data.message));
+        dispatch(setError(error.response.data.error));
     } finally {
       dispatch(setLoading(false));
     }
@@ -67,7 +67,7 @@ export const fetchEpisodes = () => async dispatch => {
     console.log(response);
     dispatch(setEpisodes(response.data.results));
   } catch(error){
-    dispatch(setError(error.response.data.message));
+    dispatch(setError(error.response.data.error));
   } finally {
     dispatch(setLoading(false));
   }
