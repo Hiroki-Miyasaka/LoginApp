@@ -52,15 +52,10 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchCharacters());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchLocations());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchEpisodes());
   }, [dispatch]);
+
 
   return (
     <HomeContainer>
